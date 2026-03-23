@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Homeopathic Store | Nature's Healing Essence</title>
+  <!-- Google Fonts + simple icons (Font Awesome CDN for clean icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS Library for subtle scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Inter', sans-serif;
+      background: #FEFAF5;
+      color: #2C3E2F;
+      scroll-behavior: smooth;
+      line-height: 1.4;
+    }
+
+    /* Dahri Moch / organic, earthy, traditional vibe: deep greens, warm neutrals, soft shadows */
+    :root {
+      --deep-herb: #2C5E2E;
+      --golden-honey: #E6B17E;
+      --clay-terra: #BC9A6C;
+      --cream-light: #FFF7E8;
+      --moss-shadow: #3B5C3A;
+      --sage-mist: #E2F0E0;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F0E5D8;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--deep-herb);
+      border-radius: 12px;
+    }
+
+    /* container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / navbar */
+    .navbar {
+      background: #FFFBF4;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(2px);
+      border-bottom: 1px solid #EADBCE;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 16px 24px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--deep-herb);
+    }
+    .logo-text h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #2B4B2C;
+    }
+    .logo-text p {
+      font-size: 0.7rem;
+      font-style: italic;
+      color: #8B6B4D;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #3A5E3B;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: var(--golden-honey);
+      border-bottom: 2px solid var(--golden-honey);
+      padding-bottom: 4px;
+    }
+    .cart-icon {
+      background: #EEDCC8;
+      padding: 8px 14px;
+      border-radius: 40px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .cart-icon:hover {
+      background: #E0CBB2;
+    }
+
+    /* hero section with natural pattern */
+    .hero {
+      background: linear-gradient(105deg, #F6EFE3 0%, #FEFAF5 100%);
+      padding: 56px 0 48px;
+      border-bottom: 1px solid #E9DDD0;
+      position: relative;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      justify-content: space-between;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      background: var(--deep-herb);
+      color: #FEF5E6;
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+    .hero-content h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #2B492C;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      margin: 20px 0 28px;
+      color: #5C4B3A;
+      max-width: 500px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--deep-herb);
+      border: none;
+      padding: 12px 32px;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .btn-primary:hover {
+      background: #1F4A21;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--deep-herb);
+      padding: 12px 32px;
+      border-radius: 60px;
+      font-weight: 600;
+      color: var(--deep-herb);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--deep-herb);
+      color: white;
+    }
+    .hero-img {
+      flex: 0.8;
+      text-align: center;
+    }
+    .hero-img img {
+      max-width: 100%;
+      border-radius: 48px;
+      box-shadow: 0 20px 30px -15px rgba(0,0,0,0.1);
+    }
+
+    /* categories marquee style */
+    .categories {
+      background: #FDF7EF;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 60%;
+      height: 3px;
+      background: var(--golden-honey);
+      margin: 8px auto 0;
+      border-radius: 4px;
+    }
+    .cat-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .cat-card {
+      background: white;
+      border-radius: 100px;
+      padding: 12px 28px;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.02);
+      font-weight: 600;
+      color: #4A6741;
+      border: 1px solid #EBDDCB;
+      transition: 0.2s;
+    }
+    .cat-card i {
+      margin-right: 8px;
+      color: var(--golden-honey);
+    }
+
+    /* products grid */
+    .products-section {
+      padding: 64px 0;
+      background: #FFFFFFF2;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 36px 24px;
+      margin-top: 24px;
+    }
+    .product-card {
+      background: #FFFCF7;
+      border-radius: 32px;
+      padding: 20px 20px 24px;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 14px rgba(97, 66, 39, 0.05);
+      border: 1px solid #F2E5D8;
+      text-align: center;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 28px -12px rgba(60, 45, 30, 0.12);
+      border-color: #DDCBB6;
+    }
+    .product-img {
+      background: #F3ECE3;
+      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 3.2rem;
+      color: var(--deep-herb);
+    }
+    .product-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 10px 0 6px;
+    }
+    .product-desc {
+      font-size: 0.85rem;
+      color: #7B6B58;
+      margin-bottom: 12px;
+    }
+    .price {
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: #2F6B31;
+      margin: 12px 0;
+    }
+    .add-to-cart {
+      background: none;
+      border: 1.5px solid var(--deep-herb);
+      padding: 8px 18px;
+      border-radius: 60px;
+      font-weight: 600;
+      color: var(--deep-herb);
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+    }
+    .add-to-cart:hover {
+      background: var(--deep-herb);
+      color: white;
+    }
+
+    /* testimonial & traditional */
+    .testimonial {
+      background: #FBF5EA;
+      padding: 56px 0;
+      text-align: center;
+    }
+    .testi-card {
+      max-width: 700px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 48px;
+      padding: 30px 28px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.03);
+    }
+    .testi-text {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #3D3A2E;
+    }
+    .testi-author {
+      margin-top: 20px;
+      font-weight: 700;
+      color: #AA7C58;
+    }
+
+    /* footer */
+    .footer {
+      background: #2C3E2F;
+      color: #DDD2C2;
+      padding: 48px 0 28px;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .footer-col h4 {
+      color: #FFE1B3;
+      margin-bottom: 16px;
+    }
+    .footer-col p, .footer-col a {
+      color: #CBBEAB;
+      text-decoration: none;
+      line-height: 1.8;
+    }
+
+    /* cart modal overlay */
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(3px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    .cart-modal.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .cart-panel {
+      background: #FFFCF5;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 48px;
+      padding: 28px;
+      box-shadow: 0 30px 40px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid #EADBCE;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .cart-items {
+      max-height: 350px;
+      overflow-y: auto;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #E1D1BF;
+    }
+    .cart-total {
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin: 20px 0;
+      text-align: right;
+    }
+    .checkout-btn {
+      background: var(--deep-herb);
+      width: 100%;
+      border: none;
+      padding: 14px;
+      border-radius: 40px;
+      color: white;
+      font-weight: bold;
+    }
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 800px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+    }
+    button {
+      background: none;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="nav-container container">
+    <div class="logo-area">
+      <i class="fas fa-leaf logo-icon"></i>
+      <div class="logo-text">
+        <h1>Homeopathic Store</h1>
+        <p>Healing Naturally since 1987</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#products">Remedies</a></li>
+      <li><a href="#about">Philosophy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="cart-icon" id="cartIconBtn">
+      <i class="fas fa-shopping-basket"></i>
+      <span id="cartCount">0</span>
+      <span>Cart</span>
+    </div>
+  </div>
+</div>
+
+<main>
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content" data-aos="fade-right">
+        <div class="hero-badge">✨ DAHRI MOCH INSPIRED ✨</div>
+        <h2>Pure Potency,<br>Rooted in Tradition</h2>
+        <p>Discover handcrafted homeopathic remedies, mother tinctures, and holistic wellness — just like ancient apothecaries with modern purity.</p>
+        <div class="btn-group">
+          <button class="btn-primary" id="exploreBtn">Explore Collection</button>
+          <button class="btn-outline" id="learnBtn">Our Heritage</button>
+        </div>
+      </div>
+      <div class="hero-img" data-aos="fade-left">
+        <img src="https://placehold.co/500x400/F2E5D8/5C6E4A?text=🌿+Herbal+Apothecary+🌿" alt="homeopathic herbs illustration" style="background:#EBD9C6; object-fit:cover;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories / Essence -->
+  <div class="categories">
+    <div class="container">
+      <h3 class="section-title">Remedy Families</h3>
+      <div class="cat-grid">
+        <div class="cat-card"><i class="fas fa-seedling"></i> Mother Tinctures</div>
+        <div class="cat-card"><i class="fas fa-mortar-pestle"></i> Biochemic Salts</div>
+        <div class="cat-card"><i class="fas fa-hand-holding-heart"></i> Dilutions (6C to 1M)</div>
+        <div class="cat-card"><i class="fas fa-flask"></i> Classical Single Remedies</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Section -->
+  <div class="products-section" id="products">
+    <div class="container">
+      <h3 class="section-title">Bestselling Homeopathic Essentials</h3>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </div>
+
+  <!-- Testimonial / traditional story -->
+  <div class="testimonial" id="about">
+    <div class="container">
+      <div class="testi-card" data-aos="zoom-in">
+        <i class="fas fa-quote-left" style="font-size: 2rem; color: #E6B17E;"></i>
+        <p class="testi-text">“I visited their physical store — felt like stepping into an old-world 'dahri moch' herbal haven. Every remedy is pure, potent, and prepared with care. My chronic migraine found relief with their Ignatia Amara.”</p>
+        <p class="testi-author">— Fatima R., Lahore</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer contact -->
+  <div class="footer" id="contact">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4><i class="fas fa-mortar-pestle"></i> Homeopathic Store</h4>
+        <p>Authentic remedies since 1987. We follow Hahnemannian principles & modern GMP standards.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick links</h4>
+        <p><a href="#">Shipping & Returns</a></p>
+        <p><a href="#">Consult a Homeopath</a></p>
+        <p><a href="#">Store Locator</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 12 Liberty Market, Lahore</p>
+        <p><i class="fas fa-phone-alt"></i> +92 300 123 4567</p>
+        <p><i class="fas fa-envelope"></i> care@homeopathicstore.pk</p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 48px; font-size: 0.75rem;">© 2025 Homeopathic Store — Healing with Nature's Wisdom</div>
+  </div>
+</main>
+
+<!-- Cart Modal -->
+<div id="cartModal" class="cart-modal">
+  <div class="cart-panel">
+    <div class="cart-header">
+      <h3><i class="fas fa-shopping-cart"></i> Your Healing Cart</h3>
+      <button class="close-cart" id="closeCartBtn">&times;</button>
+    </div>
+    <div id="cartItemsList" class="cart-items">
+      <!-- dynamic cart items -->
+      <p style="text-align:center; color: gray;">Cart is empty</p>
+    </div>
+    <div class="cart-total">
+      Total: <span id="cartTotalPrice">PKR 0</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+    <p style="font-size: 12px; margin-top: 16px; text-align:center;">🌿 Free shipping on orders above PKR 3000</p>
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, once: true });
+
+  // Product Catalog
+  const products = [
+    { id: 1, name: "Arnica Montana 30C", desc: "Classic remedy for bruises & trauma", price: 450, icon: "🌸" },
+    { id: 2, name: "Calendula Mother Tincture", desc: "Antiseptic, wound healing", price: 620, icon: "🌼" },
+    { id: 3, name: "Ignatia Amara 200C", desc: "Emotional balance & grief support", price: 530, icon: "🌿" },
+    { id: 4, name: "Nux Vomica 6C", desc: "Digestive detox & stress", price: 390, icon: "🍃" },
+    { id: 5, name: "Hypericum Perf. 30C", desc: "Nerve injuries & pain", price: 480, icon: "✨" },
+    { id: 6, name: "Symphytum Officinale", desc: "Bone healing & fractures", price: 590, icon: "🌱" }
+  ];
+
+  // cart state
+  let cart = [];  // { id, name, price, quantity }
+
+  // Helper render product grid
+  function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    if(!grid) return;
+    grid.innerHTML = '';
+    products.forEach(prod => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.setAttribute('data-aos', 'fade-up');
+      card.innerHTML = `
+        <div class="product-img"><i class="fas fa-mortar-pestle" style="font-size: 3rem;"></i></div>
+        <div class="product-title">${prod.name}</div>
+        <div class="product-desc">${prod.desc}</div>
+        <div class="price">PKR ${prod.price}</div>
+        <button class="add-to-cart" data-id="${prod.id}">Add to Cart <i class="fas fa-plus-circle"></i></button>
+      `;
+      grid.appendChild(card);
+    });
+
+    // attach event listeners to all add-to-cart buttons
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(btn.getAttribute('data-id'));
+        const product = products.find(p => p.id === id);
+        if(product) addToCart(product);
+      });
+    });
+  }
+
+  function addToCart(product) {
+    const existing = cart.find(item => item.id === product.id);
+    if(existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ id: product.id, name: product.name, price: product.price, quantity: 1 });
+    }
+    updateCartUI();
+    showCartNotification();
+  }
+
+  function updateCartUI() {
+    const cartCountSpan = document.getElementById('cartCount');
+    const cartItemsContainer = document.getElementById('cartItemsList');
+    const cartTotalSpan = document.getElementById('cartTotalPrice');
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if(cartCountSpan) cartCountSpan.innerText = totalItems;
+
+    if(!cartItemsContainer) return;
+    if(cart.length === 0) {
+      cartItemsContainer.innerHTML = '<p style="text-align:center; color: gray;">Your cart is empty, dear healer 🌿</p>';
+      if(cartTotalSpan) cartTotalSpan.innerText = 'PKR 0';
+      return;
+    }
+
+    let totalPrice = 0;
+    let itemsHtml = '';
+    cart.forEach((item, idx) => {
+      const itemTotal = item.price * item.quantity;
+      totalPrice += itemTotal;
+      itemsHtml += `
+        <div class="cart-item">
+          <div><strong>${item.name}</strong> <br> <small>PKR ${item.price} x ${item.quantity}</small></div>
+          <div>PKR ${itemTotal} <button class="remove-item" data-idx="${idx}" style="margin-left:12px; background:#EEDCC8; border-radius:30px; padding:4px 8px;"><i class="fas fa-trash-alt"></i></button></div>
+        </div>
+      `;
+    });
+    cartItemsContainer.innerHTML = itemsHtml;
+    if(cartTotalSpan) cartTotalSpan.innerText = `PKR ${totalPrice}`;
+
+    // attach remove events
+    document.querySelectorAll('.remove-item').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(btn.getAttribute('data-idx'));
+        if(!isNaN(idx) && cart[idx]) {
+          cart.splice(idx, 1);
+          updateCartUI();
+        }
+      });
+    });
+  }
+
+  function showCartNotification() {
+    const toastMsg = document.createElement('div');
+    toastMsg.innerText = '✓ Added to cart! 🌿';
+    toastMsg.style.position = 'fixed';
+    toastMsg.style.bottom = '20px';
+    toastMsg.style.right = '20px';
+    toastMsg.style.backgroundColor = '#2C5E2E';
+    toastMsg.style.color = 'white';
+    toastMsg.style.padding = '12px 24px';
+    toastMsg.style.borderRadius = '60px';
+    toastMsg.style.zIndex = '1200';
+    toastMsg.style.fontWeight = 'bold';
+    document.body.appendChild(toastMsg);
+    setTimeout(() => toastMsg.remove(), 1500);
+  }
+
+  // Cart Modal Logic
+  const cartModal = document.getElementById('cartModal');
+  const cartIconBtn = document.getElementById('cartIconBtn');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  function openCartModal() {
+    if(cartModal) cartModal.classList.add('active');
+    updateCartUI(); // refresh modal content
+  }
+  function closeCartModal() {
+    if(cartModal) cartModal.classList.remove('active');
+  }
+
+  if(cartIconBtn) cartIconBtn.addEventListener('click', openCartModal);
+  if(closeCartBtn) closeCartBtn.addEventListener('click', closeCartModal);
+  window.addEventListener('click', (e) => {
+    if(e.target === cartModal) closeCartModal();
+  });
+
+  if(checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+      if(cart.length === 0) {
+        alert("Your healing basket is empty. Add some remedies 🌱");
+      } else {
+        alert(`Thank you for your order! Total: ${document.getElementById('cartTotalPrice')?.innerText}. A confirmation will be sent shortly.`);
+        cart = [];
+        updateCartUI();
+        closeCartModal();
+      }
+    });
+  }
+
+  // Buttons: explore & learn
+  const exploreBtn = document.getElementById('exploreBtn');
+  if(exploreBtn) {
+    exploreBtn.addEventListener('click', () => {
+      document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+  const learnBtn = document.getElementById('learnBtn');
+  if(learnBtn) {
+    learnBtn.addEventListener('click', () => {
+      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // Initialize products and cart state
+  renderProducts();
+  updateCartUI();
+
+  // additional decorative static: ensure product hover etc
+</script>
+</body>
+</html>
